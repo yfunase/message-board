@@ -5,18 +5,25 @@
   
   <div class="panel-body">
     <% @message.each do |message| %>
-  名前:<%= message.name %>
-  内容:<%= message.body %>
-  <br>
-<% end %>
+      <span class="label label-info"><%= message.name %></span>
+      <%= message.body %>
+      <br>
+    <% end %>
   </div>
 </div>
 
 <%= form_for(Message.new) do |f| %>
-  名前:
-  <%= f.text_field :name %>
-  
-  内容:
-  <%= f.text_field :body %>
-  <%= f.submit class: "btn btn-sm btn-primary" %>
+  <div class="input group">
+    <label>名前:</label>
+      <div>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>  
+  </div class="input group">
+  <br>
+  <label>内容:</label>
+  <%= f.text_area :body, class:"form-control", :size => "20x5" %>
+  <br>
+  <div>
+    <%= f.submit class: "btn btn-sm btn-primary" %>
+  </div>
 <% end %>
