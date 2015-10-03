@@ -4,7 +4,7 @@
   </div>
   
   <div class="panel-body">
-    <% @message.each do |message| %>
+    <% @messages.each do |message| %>
       <span class="label label-info"><%= message.name %></span>
       <%= message.body %>
       <br>
@@ -18,11 +18,13 @@
       <div>
         <%= f.text_field :name, class: "form-control" %>
       </div>  
-  </div class="input group">
-  <br>
+    <br>
+  </div>
+  <div class="input group">
   <label>内容:</label>
   <%= f.text_area :body, class:"form-control", :size => "20x5" %>
   <br>
+  </div>
   <div>
     <%= f.submit class: "btn btn-sm btn-primary" %>
   </div>
