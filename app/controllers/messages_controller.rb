@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :set_message, only: [:edit, :update]
+  before_action :set_message, only: [:edit, :update, :destroy]
   def index
     # acquire all the messages
     @messages = Message.all
@@ -14,6 +14,11 @@ class MessagesController < ApplicationController
       # If saving failed, go back to editiing page
       render 'edit'
     end
+  end
+  
+  def destroy
+    @message.destroy
+    redirect_to root_path, notice: 'メッセージを削除しました'
   end
   
   def create
